@@ -27,17 +27,32 @@ class EmpresaController extends Controller
     public function store(StoreFormRequest $request)
     {
         //
-        $empresa = Empresa::create([
-            'nombreEmpresa' => $request->nombreEmpresa,
-            'rif' => $request->rif,
-            'email' => $request->email,
-            'emailSecondary' => $request->emailSecondary,
-            'phone' => $request->phone,
-            'phoneSecondary' => $request->phoneSecondary,
-            'pais' => $request->pais,
-            'estado' => $request->estado,
-            'direccion' => $request->direccion,
-        ]);
+        $empresa = Empresa::updateOrCreate(
+            ['id' => 1],
+            [
+                'nombreEmpresa' => $request->nombreEmpresa,
+                'rif' => $request->rif,
+                'email' => $request->email,
+                'emailSecondary' => $request->emailSecondary,
+                'phone' => $request->phone,
+                'phoneSecondary' => $request->phoneSecondary,
+                'pais' => $request->pais,
+                'estado' => $request->estado,
+                'direccion' => $request->direccion
+            ]
+        );
+
+        // $empresa = Empresa::create([
+        //     'nombreEmpresa' => $request->nombreEmpresa,
+        //     'rif' => $request->rif,
+        //     'email' => $request->email,
+        //     'emailSecondary' => $request->emailSecondary,
+        //     'phone' => $request->phone,
+        //     'phoneSecondary' => $request->phoneSecondary,
+        //     'pais' => $request->pais,
+        //     'estado' => $request->estado,
+        //     'direccion' => $request->direccion,
+        // ]);
     }
 
 
