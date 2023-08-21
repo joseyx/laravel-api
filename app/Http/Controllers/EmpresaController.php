@@ -14,7 +14,7 @@ class EmpresaController extends Controller
      */
     public function index(): JsonResponse
     {
-        $empresa = Empresa::find(1);
+        $empresa = Empresa::latest()->first();
 
         return response()->json([
             'empresa' => $empresa,
@@ -24,11 +24,10 @@ class EmpresaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreFormRequest $request)
+    public function store(StoreFormRequest $request): JsonResponse
     {
         //
-        $empresa = Empresa::updateOrCreate(
-            ['id' => 1],
+        $empresa = Empresa::create(
             [
                 'nombreEmpresa' => $request->nombreEmpresa,
                 'rif' => $request->rif,
@@ -41,6 +40,10 @@ class EmpresaController extends Controller
                 'direccion' => $request->direccion
             ]
         );
+
+        return response()->json([
+            'empresa' => $empresa,
+        ]);
 
         // $empresa = Empresa::create([
         //     'nombreEmpresa' => $request->nombreEmpresa,
