@@ -142,6 +142,8 @@ return [
     'url'                  => 'El campo :attribute debe ser una URL válida.',
     'uuid'                 => 'El campo :attribute debe ser un UUID válido.',
     'attributes'           => [
+        'phoneSecondary' => 'teléfono alternativo',
+        'emailSecondary' => 'correo electrónico alternativo',
         'address'                  => 'dirección',
         'age'                      => 'edad',
         'amount'                   => 'cantidad',

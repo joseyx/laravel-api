@@ -37,6 +37,10 @@ class StoreFormRequest extends FormRequest
             'phoneSecondary' => 'required|numeric|digits:11',
             'pais' => 'required|string|max:30',
             'estado' => 'required|string|max:30',
+            'direccion' => 'required|string|max:50',
+            'instagram' => 'string',
+            'facebook' => 'string',
+            'twitter' => 'string',
         ];
     }
 }

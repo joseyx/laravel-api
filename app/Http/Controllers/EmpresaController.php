@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFormRequest;
 use App\Models\Empresa;
+use App\Models\Redes;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -14,11 +15,16 @@ class EmpresaController extends Controller
      */
     public function index(): JsonResponse
     {
+        //
         $empresa = Empresa::latest()->first();
+        $redes = Redes::latest()->first();
 
         return response()->json([
             'empresa' => $empresa,
+            'redes' => $redes,
         ]);
+
+
     }
 
     /**
@@ -41,30 +47,32 @@ class EmpresaController extends Controller
             ]
         );
 
+        $redes = Redes::create(
+            [
+                'instagram' => $request->instagram,
+                'facebook' => $request->facebook,
+                'twitter' => $request->twitter,
+            ]
+        );
+
         return response()->json([
             'empresa' => $empresa,
         ]);
 
-        // $empresa = Empresa::create([
-        //     'nombreEmpresa' => $request->nombreEmpresa,
-        //     'rif' => $request->rif,
-        //     'email' => $request->email,
-        //     'emailSecondary' => $request->emailSecondary,
-        //     'phone' => $request->phone,
-        //     'phoneSecondary' => $request->phoneSecondary,
-        //     'pais' => $request->pais,
-        //     'estado' => $request->estado,
-        //     'direccion' => $request->direccion,
-        // ]);
     }
 
 
     /**
-     * Display the specified resource.
+     * Display the latest empresa.
      */
-    public function show(string $id)
+    public function show(): JsonResponse
     {
         //
+        $empresa = Empresa::latest()->first();
+
+        return response()->json([
+            'empresa' => $empresa,
+        ]);
     }
 
     /**
