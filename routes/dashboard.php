@@ -20,3 +20,5 @@ Route::get('/dashboard/config', [ConfigController::class, 'index']);
 
 Route::get('/dashboard/redes', [RedesController::class, 'index'])
                 ->name('get_redes');
+
+Route::post('/dashboard/redes', [RedesController::class, 'store']);

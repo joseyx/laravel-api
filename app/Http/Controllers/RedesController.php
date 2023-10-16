@@ -18,4 +18,20 @@ class RedesController extends Controller
             'redes' => $redes,
         ]);
     }
+
+    public function store(Request $request): JsonResponse
+    {
+        //
+        $redes = Redes::create(
+            [
+                'instagram' => $request->instagram,
+                'facebook' => $request->facebook,
+                'twitter' => $request->twitter,
+            ]
+        );
+
+        return response()->json([
+            'redes' => $redes,
+        ]);
+    }
 }

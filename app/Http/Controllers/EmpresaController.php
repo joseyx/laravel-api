@@ -57,6 +57,7 @@ class EmpresaController extends Controller
 
         return response()->json([
             'empresa' => $empresa,
+            'redes' => $redes,
         ]);
 
     }
