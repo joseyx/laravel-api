@@ -62,18 +62,15 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show($id): JsonResponse
     {
-        //
+        // Retrieve the product
+        $product = Product::findOrFail($id);
+
+        // Return a JSON response with the product and a 200 status code
+        return response()->json($product);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -86,8 +83,11 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Product $product): JsonResponse
     {
         //
+        $product->delete();
+
+        return response()->json(null, 204);
     }
 }
