@@ -7,6 +7,9 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EarthController;
+use App\Http\Controllers\YoutubeController;
+use App\Http\Controllers\InstagramController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [RegisteredUserController::class, 'store'])
@@ -36,3 +39,14 @@ Route::post('/email/verification-notification', [EmailVerificationNotificationCo
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->middleware('auth:sanctum')
                 ->name('logout');
+
+Route::get('/instagram', [InstagramController::class, 'index'])
+                ->name('get_instagram');
+
+Route::get('/youtube', [YoutubeController::class, 'index'])
+                ->name('get_youtube');
+
+Route::get('/earth', [EarthController::class, 'index'])
+                ->name('get_earth');
+
+
