@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EarthController;
 use App\Http\Controllers\YoutubeController;
@@ -48,5 +49,11 @@ Route::get('/youtube', [YoutubeController::class, 'index'])
 
 Route::get('/earth', [EarthController::class, 'index'])
                 ->name('get_earth');
+
+Route::get('/products', [ProductController::class, 'index'])
+                ->name('get_products');
+
+route::get('/product/:id', [ProductController::class, 'show'])
+                ->name('get_product');
 
 

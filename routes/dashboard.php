@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RedesController;
 use App\Http\Controllers\EarthController;
 use App\Http\Controllers\YoutubeController;
@@ -45,3 +46,11 @@ Route::delete('/dashboard/youtube/{id}', [YoutubeController::class, 'destroy'])
 Route::delete('/dashboard/instagram/{id}', [InstagramController::class, 'destroy'])
                 ->middleware('auth:sanctum', 'isAdmin')
                 ->name('delete_instagram');
+
+Route::post('/dashboard/products' , [ProductController::class, 'store'])
+                ->middleware('auth:sanctum', 'isAdmin')
+                ->name('register_product');
+
+Route::delete('/dashboard/products/{id}', [ProductController::class, 'destroy'])
+                ->middleware('auth:sanctum', 'isAdmin')
+                ->name('delete_product');
